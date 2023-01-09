@@ -1,5 +1,6 @@
 import React from "react";
 import Featured from "../../components/featured/Featured";
+import FeaturedProPerties from "../../components/featuredProperties/FeaturedProPerties";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import PropertyList from "../../components/propertyList/PropertyList";
@@ -14,6 +15,8 @@ const Home = () => {
         <Featured />
         <HomeTitle>Browse by property type</HomeTitle>
         <PropertyList/>
+         <HomeTitle>Homes guests love</HomeTitle>
+         <FeaturedProPerties/>
       </HomeContainer>
     </>
   );
