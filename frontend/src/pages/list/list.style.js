@@ -57,17 +57,18 @@ export const OptionItems = styled.div`
   margin-bottom: 10px;
   color: #555;
   font-size: 12px;
-  input{
-    width:50px;
+  input {
+    width: 50px;
   }
 `;
 export const Optionsu = styled.div`
   padding: 10px;
 `;
-export const Span = styled.span` height: 30px;
-    padding: 5px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    cursor: pointer;`;
-
+export const Span = styled.span`
+  height: 30px;
+  padding: 5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;

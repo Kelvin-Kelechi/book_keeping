@@ -1,10 +1,10 @@
-import { format } from "date-fns";
+import { format } from "date-fns"; 
 import React, { useState } from "react";
 import { DateRange } from "react-date-range";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { OptionsItem } from "../../components/header/header.style";
 import Navbar from "../../components/navbar/Navbar";
+import SearchItemu from "../../components/searchItem/SearchItemu";
 import {
   ListContainer,
   ListResult,
@@ -84,7 +84,17 @@ const List = () => {
               <button>Search</button>
             </SearchItem>
           </ListSearch>
-          <ListResult></ListResult>
+          <ListResult>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+            <SearchItemu/>
+          </ListResult>
         </ListWrapper>
       </ListContainer>
     </>
