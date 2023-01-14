@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"; 
 
 export const SearchItem = styled.div`
 border: 1px solid lightgray;
@@ -9,7 +9,7 @@ border: 1px solid lightgray;
   gap: 20px;
   margin-bottom: 20px;
 `
-export const Img = styled.img`
+export const SiImg = styled.img`
 width: 200px;
   height: 200px;
   object-fit: cover;
@@ -34,18 +34,8 @@ export const SiSubtitle = styled.span`
 export const SiFeatures = styled.span`
   font-size: 12px;
 `;
-export const SiDetails = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-export const SiDetailTexts = styled.div`
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
+ 
+ 
 export const SiPrice = styled.span`
   font-size: 24px;
 `;
@@ -53,7 +43,7 @@ export const SiTaxOp = styled.span`
   font-size: 12px;
   color: gray;
 `;
-export const siCheckButton = styled.button`
+export const SiCheckButton = styled.button`
   background-color: #0071c2;
   color: white;
   font-weight: bold;
@@ -61,4 +51,40 @@ export const siCheckButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 5px;
+`;
+export const SiCancelOp = styled.span`
+  font-size: 12px;
+  color: #008009;
+  font-weight: bold;
+`;
+export const SiCancelOpSubtitle = styled.span`
+  font-size: 12px;
+  color: #008009;
+`;
+export const SiDetails = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const SiRating = styled.div`
+  display: flex;
+  justify-content: space-between;
+  span {
+    font-weight: 500;
+  }
+  button {
+    background-color: #003580;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: none;
+  }
+`;
+export const SiDetailTexts = styled.div`
+  background-color: #003580;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  border: none;
 `;
