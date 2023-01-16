@@ -82,9 +82,8 @@ export const SiRating = styled.div`
   }
 `;
 export const SiDetailTexts = styled.div`
-  background-color: #003580;
-  color: white;
-  padding: 5px;
-  font-weight: bold;
-  border: none;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
