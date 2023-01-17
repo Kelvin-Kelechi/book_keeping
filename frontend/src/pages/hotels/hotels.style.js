@@ -18,3 +18,9 @@ export const HotelDistance = styled.span`
 export const HotelPriceHighLight = styled.span`
 
 `
+export const HotelImages = styled.div`
+
+`
+export const HotelImgWrapper = styled.div`
+
+`
