@@ -86,3 +86,7 @@ export const HotelDesc = styled.p`
   margin-top: 20px;
 `;
  
+export const Slider = styled.div`
+   
+`;
+ 

@@ -3,9 +3,31 @@ import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
-import {MdLocationOn} from 'react-icons/md'
-import { HotelAddress, HotelContainer, HotelDesc, HotelDetails, HotelDetailsPrice, HotelDetailsTexts, HotelDistance, HotelImages, HotelImgWrapper, HotelPriceHighLight, HotelTitle, HotelWrapper } from "./hotels.style";
+import { MdLocationOn } from "react-icons/md";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import {
+  HotelAddress,
+  HotelContainer,
+  HotelDesc,
+  HotelDetails,
+  HotelDetailsPrice,
+  HotelDetailsTexts,
+  HotelDistance,
+  HotelImages,
+  HotelImgWrapper,
+  HotelPriceHighLight,
+  HotelTitle,
+  HotelWrapper,
+  Slider,
+} from "./hotels.style";
 const Hotels = () => {
+  const [sliderNum, setSliderNum] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = (i) => {
+    setSliderNum(i);
+    setOpen(true);
+  };
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -31,6 +53,12 @@ const Hotels = () => {
       <Navbar />
       <Header type="list" />
       <HotelContainer>
+        {open && (
+          <Slider>
+            <FaArrowCircleLeft />
+            <FaArrowCircleRight />
+          </Slider>
+        )}
         <HotelWrapper>
           <HotelTitle>Grand Hotel</HotelTitle>
           <HotelAddress>
@@ -45,7 +73,7 @@ const Hotels = () => {
           <HotelImages>
             {photos.map((photo, i) => (
               <HotelImgWrapper key={i}>
-                <img src={photo.src} alt="" />
+                <img onClick={handleOpen} src={photo.src} alt="" />
               </HotelImgWrapper>
             ))}
           </HotelImages>
@@ -79,8 +107,8 @@ const Hotels = () => {
             </HotelDetailsPrice>
           </HotelDetails>
         </HotelWrapper>
-         <MailList/>
-         <Footer/>
+        <MailList />
+        <Footer />
       </HotelContainer>
     </>
   );
