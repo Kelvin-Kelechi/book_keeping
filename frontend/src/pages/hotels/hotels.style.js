@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-
+import { IoExitOutline } from "react-icons/io5";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 export const HotelContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,6 +88,48 @@ export const HotelDesc = styled.p`
 `;
  
 export const Slider = styled.div`
-   
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.613);
+  z-index: 999;
+  display: flex;
+  align-items: center;
 `;
+ 
+export const SliderWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 80%;
+    height: 80vh;
+  }
+`;
+export const SliderExit = styled(IoExitOutline)`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: lightgray;
+  cursor: pointer;
+`;
+export const SliderArrLeft = styled(FaArrowCircleLeft)`
+  margin: 20px;
+  font-size: 50px;
+  color: lightgray;
+  cursor: pointer;
+`;
+export const SliderArrRight = styled(FaArrowCircleRight)`
+  margin: 20px;
+  font-size: 50px;
+  color: lightgray;
+  cursor: pointer;
+`;
+ 
+ 
  

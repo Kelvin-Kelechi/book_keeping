@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
 import { MdLocationOn } from "react-icons/md";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+
 import {
   HotelAddress,
   HotelContainer,
@@ -19,6 +20,11 @@ import {
   HotelTitle,
   HotelWrapper,
   Slider,
+  SliderArrLeft,
+  SliderArrRight,
+  SliderExit,
+  SliderImg,
+  SliderWrapper,
 } from "./hotels.style";
 const Hotels = () => {
   const [sliderNum, setSliderNum] = useState(0);
@@ -28,6 +34,15 @@ const Hotels = () => {
     setSliderNum(i);
     setOpen(true);
   };
+  const handleMove = (direction) =>{
+    let newSliderMove;
+    if (direction === 'l') {
+      newSliderMove = sliderNum === 0 ? 5 : sliderNum-1
+    } else {
+       newSliderMove = sliderNum === 5 ? 0 : sliderNum+1;
+    }
+    setSliderNum(newSliderMove)
+  }
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -55,8 +70,12 @@ const Hotels = () => {
       <HotelContainer>
         {open && (
           <Slider>
-            <FaArrowCircleLeft />
-            <FaArrowCircleRight />
+            <SliderExit onClick={() => setOpen(false)} />
+            <SliderArrLeft onClick={() => handleMove("l")} />
+            <SliderWrapper>
+              <img src={photos[sliderNum].src} alt="" />
+            </SliderWrapper>
+            <SliderArrRight onClick={() => handleMove("r")} />
           </Slider>
         )}
         <HotelWrapper>
@@ -73,7 +92,7 @@ const Hotels = () => {
           <HotelImages>
             {photos.map((photo, i) => (
               <HotelImgWrapper key={i}>
-                <img onClick={handleOpen} src={photo.src} alt="" />
+                <img onClick={() => handleOpen(i)} src={photo.src} alt="" />
               </HotelImgWrapper>
             ))}
           </HotelImages>
