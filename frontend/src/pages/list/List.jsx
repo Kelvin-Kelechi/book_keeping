@@ -1,4 +1,4 @@
-import { format } from "date-fns"; 
+import { format } from "date-fns";
 import React, { useState } from "react";
 import { DateRange } from "react-date-range";
 import { useLocation } from "react-router-dom";
@@ -16,13 +16,14 @@ import {
   SearchTitle,
   Span,
 } from "./list.style";
- 
+
 const List = () => {
-  const location = useLocation()
-   const [openDate, setOpenDate] = useState(false);
-  const [destination, setDestination] = useState(location.state.destination);
-  const [option, setOption] = useState(location.state.option);
-  const [date, setDate] = useState(location.state.date);
+  const location = useLocation();
+  const [openDate, setOpenDate] = useState(false);
+  const [destination, setDestination] = useState(location.state.destination );
+  const [option, setOption] = useState( location.state.option);
+  const [date, setDate] = useState( location.state.date);
+  console.log(location)
   return (
     <>
       <Navbar />
@@ -79,21 +80,20 @@ const List = () => {
                   <span>Room </span>
                   <input type="number" min={1} placeholder={option.room} />
                 </OptionItems>
-                 
               </Optionsu>
               <button>Search</button>
             </SearchItem>
           </ListSearch>
           <ListResult>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
-            <SearchItemu/>
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
+            <SearchItemu />
           </ListResult>
         </ListWrapper>
       </ListContainer>
