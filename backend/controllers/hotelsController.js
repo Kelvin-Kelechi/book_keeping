@@ -39,11 +39,11 @@ export const HOTELS_GET = async (req, res) => {
     res.status(500).json(error);
   }
 };
-export const HOTELS_GET_ALL = async (req, res) => {
+export const HOTELS_GET_ALL = async (req, res, next) => {
   try {
     const getallHotel = await  Hotel.find();
     res.status(200).json(getallHotel);
   } catch (error) {
-    res.status(500).json(error);
+    next(error)
   }
 };
