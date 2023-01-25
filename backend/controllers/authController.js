@@ -1,10 +1,11 @@
 import User from "../models/User.js";
-import bycrypt from 'bcryptjs'
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { CreateError } from "../utils/error.js";
-export const Register = async (req, res, next) => {
+export const REGISTER = async (req, res, next) => {
   try {
-    const salt = bycrypt.genSaltSync(10);
-    const hash = bycrypt.hashSync(req.body.password, salt);
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
 
     const newUser = new User({
       username: req.body.username,
@@ -17,16 +18,29 @@ export const Register = async (req, res, next) => {
     next(error);
   }
 };
-export const Login = async (req, res, next) => {
+export const LOGIN = async (req, res, next) => {
   try {
-      const user = await User.findOne({username: req.body.username})
-      if(!user) return next(CreateError(404, "User not found"))
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return next(CreateError(404, "User not found"));
 
-      const isPasswordCorrect = await bycrypt.compare(req.body.password, user.password)
-      if(!isPasswordCorrect) return next(CreateError(400, "wrong password or username"))
-      
-    res.status(200).json(user);
-  } catch (error) {
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!isPasswordCorrect)
+      return next(CreateError(400, "Wrong password or username"));
+
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT
+    );
+    const { password, isAdmin, ...other } = user._doc;
+
+    res
+      .cookie("access_token", token, { httpOnly: true })
+      .status(200)
+      .json(other);
+  } catch (error) {    
     next(error);
   }
-};
+}; 
