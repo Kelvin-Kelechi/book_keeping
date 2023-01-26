@@ -12,11 +12,20 @@ export const VerifyToken = (req, res, next) => {
   });
 };
 export const VerifyUser = (req, res, next) => {
-  VerifyToken(req, res, () => {
+  VerifyToken(req, res,  () => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
       return next(CreateError(403, "You are not authorized"));
     }
-  });
+  }); 
+};
+export const VerifyAdmin = (req, res, next) => {
+  VerifyToken(req, res, next, () => {
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      return next(CreateError(403, "You are not authorized"));
+    }
+  }); 
 };
