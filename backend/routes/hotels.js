@@ -6,6 +6,7 @@ import {
   HOTELS_GET_ALL,
   HOTELS_GET,
   countByCity,
+  countByType,
 } from "../controllers/hotelsController.js";
 import { VerifyAdmin } from "../utils/verifyToken.js";
 const router = express();
@@ -16,6 +17,6 @@ router.delete("/:id", VerifyAdmin, HOTELS_DELETE);
 router.get("/find/:id", HOTELS_GET);
 router.get("/", HOTELS_GET_ALL);
 router.get("/countByCity", countByCity);
-router.get("/countByType", HOTELS_GET_ALL);
+router.get("/countByType", countByType);
 
 export default router;
