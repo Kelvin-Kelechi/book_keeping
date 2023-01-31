@@ -9,7 +9,7 @@ const Featured = () => {
   console.log(data);
   return (
     <Feature>
-      {loading ? (
+      {loading ? ( 
         "loading... please wait"
       ) : (
         <>
