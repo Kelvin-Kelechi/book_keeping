@@ -2,7 +2,8 @@ import React from 'react'
 import { Fp, FpCity, FpImg, FpItem, FpName, FpPrice, FpRating } from './featuredProperties.style'
 
 const FeaturedProPerties = () => {
-  return (
+  const { data, error, loading } = useFetch("/hotels/countByType"); 
+  return ( 
     <>
       <Fp>
         <FpItem>
