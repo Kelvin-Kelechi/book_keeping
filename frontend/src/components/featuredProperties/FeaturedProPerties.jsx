@@ -1,8 +1,8 @@
 import React from 'react'
 import { Fp, FpCity, FpImg, FpItem, FpName, FpPrice, FpRating } from './featuredProperties.style'
-
+import useFetch from "../../hooks/useFetch";
 const FeaturedProPerties = () => {
-  const { data, error, loading } = useFetch("/hotels/countByType"); 
+  const { data, error, loading } = useFetc("/hotels/countByType");  
   return ( 
     <>
       <Fp>
