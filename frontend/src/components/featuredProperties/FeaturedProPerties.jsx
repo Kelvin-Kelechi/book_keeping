@@ -1,54 +1,42 @@
-import React from 'react'
-import { Fp, FpCity, FpImg, FpItem, FpName, FpPrice, FpRating } from './featuredProperties.style'
+import React from "react";
+import {
+  Fp,
+  FpCity,
+  FpImg,
+  FpItem,
+  FpName,
+  FpPrice,
+  FpRating,
+} from "./featuredProperties.style";
 import useFetch from "../../hooks/useFetch";
 const FeaturedProPerties = () => {
-  const { data, error, loading } = useFetc("/hotels/countByType");  
-  return ( 
+  const { data, error, loading } = useFetch("hotels?featured=true&limit=4");
+  return (
     <>
       <Fp>
-        <FpItem>
-          <FpImg src="https://cf.bstatic.com/xdata/images/hotel/square600/13125860.webp?k=e148feeb802ac3d28d1391dad9e4cf1e12d9231f897d0b53ca067bde8a9d3355&o=&s=1" />
-          <FpName>Aparthotel Stare Miasto</FpName>
-          <FpCity>Madrid</FpCity>
-          <FpPrice>Starting from $120</FpPrice>
-          <FpRating>
-            <button>8.9</button>
-            <span>Excellent</span>
-          </FpRating>
-        </FpItem>
-        <FpItem>
-          <FpImg src="https://cf.bstatic.com/xdata/images/hotel/square600/13125860.webp?k=e148feeb802ac3d28d1391dad9e4cf1e12d9231f897d0b53ca067bde8a9d3355&o=&s=1" />
-          <FpName>Aparthotel Stare Miasto</FpName>
-          <FpCity>Madrid</FpCity>
-          <FpPrice>Starting from $120</FpPrice>
-          <FpRating>
-            <button>8.9</button>
-            <span>Excellent</span>
-          </FpRating>
-        </FpItem>
-        <FpItem>
-          <FpImg src="https://cf.bstatic.com/xdata/images/hotel/square600/13125860.webp?k=e148feeb802ac3d28d1391dad9e4cf1e12d9231f897d0b53ca067bde8a9d3355&o=&s=1" />
-          <FpName>Aparthotel Stare Miasto</FpName>
-          <FpCity>Madrid</FpCity>
-          <FpPrice>Starting from $120</FpPrice>
-          <FpRating>
-            <button>8.9</button>
-            <span>Excellent</span>
-          </FpRating>
-        </FpItem>
-        <FpItem>
-          <FpImg src="https://cf.bstatic.com/xdata/images/hotel/square600/13125860.webp?k=e148feeb802ac3d28d1391dad9e4cf1e12d9231f897d0b53ca067bde8a9d3355&o=&s=1" />
-          <FpName>Aparthotel Stare Miasto</FpName>
-          <FpCity>Madrid</FpCity>
-          <FpPrice>Starting from $120</FpPrice>
-          <FpRating>
-            <button>8.9</button>
-            <span>Excellent</span>
-          </FpRating>
-        </FpItem>
+        {loading ? (
+          "loading... please wait"
+        ) : (
+          <>
+            {data.map((item) => (
+              <FpItem>
+                <FpImg src={item.photo[0]} />
+                <FpName>{item.name}</FpName>
+                <FpCity>{item.city}</FpCity>
+                <FpPrice>Starting from ${item.cheapestPrice}</FpPrice>
+                {item.rating && (
+                  <FpRating>
+                    <button>{item.rating}</button>
+                    <span>Excellent</span>
+                  </FpRating>
+                )}
+              </FpItem>
+            ))}
+          </>
+        )}
       </Fp>
     </>
   );
-}
+};
 
-export default FeaturedProPerties
+export default FeaturedProPerties;

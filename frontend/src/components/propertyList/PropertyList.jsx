@@ -18,15 +18,15 @@ const PropertyList = () => {
         "loading... please wait"
       ) : (
         <>
-          {images && 
-             data.map((img, i) => (
+          {images &&
+            data.map((img, i) => (
               <PListItem key={i}>
                 <Img src={img} />
                 <PListTitle>
-                  <h1></h1>
+                  <h1>{data[i].type}</h1> 
                   <h2>
-                    {data[i].count} {data[i].type}  
-                  </h2> 
+                    {data[i].count} {data[i].type}
+                  </h2>
                 </PListTitle>
               </PListItem>
             ))}
