@@ -17,18 +17,18 @@ import {
   SiTaxOp,
   SiTitle,
 } from "./searchItemu.style";
-
-const SearchItemu = () => {
+import {Link} from 'react-router-dom'
+const SearchItemu = ({item}) => {
   return (
     <>
       <SearchItem>
-        <SiImg src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1" />
+        <SiImg src={item.photo[0]} />
         <SiDesc>
-          <SiTitle>Tower Street Apartments</SiTitle>
-          <SiDistance>500m from center</SiDistance>
+          <SiTitle>{item.title}</SiTitle>
+          <SiDistance>{item.distance}</SiDistance>
           <SiTaxOp>Free airport taxi</SiTaxOp>
           <SiSubtitle> Studio Apartment with Air conditioning</SiSubtitle>
-          <SiFeatures> Entire studio • 1 bathroom • 21m² 1 full bed</SiFeatures>
+          <SiFeatures> {item.desc}</SiFeatures>
           <SiCancelOp>Free cancellation</SiCancelOp>
           <SiCancelOpSubtitle>
             {" "}
@@ -36,14 +36,17 @@ const SearchItemu = () => {
           </SiCancelOpSubtitle>
         </SiDesc>
         <SiDetails>
-          <SiRating>
-            <span>Excellent</span>
-            <button>8.9</button>
-          </SiRating>
+          {item.rating && (
+            <SiRating>
+              <span>Excellent</span>
+              <button>{item.rating}</button>
+            </SiRating>
+          )}
           <SiDetailTexts>
-            <SiPrice>$133</SiPrice>
+            <SiPrice>${item.cheapestPrice}</SiPrice>
             <SiTaxOp>Includes taxes and fees</SiTaxOp>
-            <SiCheckButton>See availability</SiCheckButton>
+             
+            <Link to={`/hotels/${item._id}`}><SiCheckButton>See availability</SiCheckButton></Link>
           </SiDetailTexts>
         </SiDetails>
       </SearchItem>

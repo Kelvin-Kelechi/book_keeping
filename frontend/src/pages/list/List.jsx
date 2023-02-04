@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import SearchItemu from "../../components/searchItem/SearchItemu";
+import useFetch from "../../hooks/useFetch";
 import {
   ListContainer,
   ListResult,
@@ -24,6 +25,7 @@ const List = () => {
   const [option, setOption] = useState( location.state.option);
   const [date, setDate] = useState( location.state.date);
   console.log(location)
+  const { data, error, loading } = useFetch(`hotels?city=${destination}`);
   return (
     <>
       <Navbar />
@@ -85,15 +87,15 @@ const List = () => {
             </SearchItem>
           </ListSearch>
           <ListResult>
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
-            <SearchItemu />
+            {loading ? (
+              "loading..please wait"
+            ) : (
+              <>
+                {data.map((item) => (
+                  <SearchItemu item={item} />
+                ))}
+              </>
+            )}
           </ListResult>
         </ListWrapper>
       </ListContainer>

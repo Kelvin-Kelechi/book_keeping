@@ -1,19 +1,22 @@
 import React from 'react'
 import { NavBar, NavContainer, NavItems, NavButton, Logo } from './navbar.style'
+import {Link } from 'react-router-dom'
 const Navbar = () => {
   return (
-     <>
-     <NavBar>
+    <>
+      <NavBar>
         <NavContainer>
+          <Link to='/'   style={{color:'white', textDecoration:'none'}}>
             <Logo>Kedevbooking</Logo>
-            <NavItems>
-                <NavButton>Register</NavButton>
-                <NavButton>Login</NavButton>
-            </NavItems>
+          </Link>
+          <NavItems>
+            <NavButton>Register</NavButton>
+            <NavButton>Login</NavButton>
+          </NavItems>
         </NavContainer>
-     </NavBar>
-     </>
-  )
+      </NavBar>
+    </>
+  );
 }
 
 export default Navbar
