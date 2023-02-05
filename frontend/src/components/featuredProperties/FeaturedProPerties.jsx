@@ -19,7 +19,7 @@ const FeaturedProPerties = () => {
         ) : (
           <>
             {data.map((item) => (
-              <FpItem>
+              <FpItem key={item._id}>
                 <FpImg src={item.photo[0]} />
                 <FpName>{item.name}</FpName>
                 <FpCity>{item.city}</FpCity>

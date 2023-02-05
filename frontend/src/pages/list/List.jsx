@@ -21,11 +21,18 @@ import {
 const List = () => {
   const location = useLocation();
   const [openDate, setOpenDate] = useState(false);
-  const [destination, setDestination] = useState(location.state.destination );
-  const [option, setOption] = useState( location.state.option);
-  const [date, setDate] = useState( location.state.date);
-  console.log(location)
-  const { data, error, loading } = useFetch(`hotels?city=${destination}`);
+  const [destination, setDestination] = useState(location.state.destination);
+  const [option, setOption] = useState(location.state.option);
+  const [date, setDate] = useState(location.state.date);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+  console.log(location);
+  const { data, error, loading, reFetch } = useFetch(
+    `hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  );
+  const handleClick = () => {
+    reFetch();
+  };
   return (
     <>
       <Navbar />
@@ -61,14 +68,20 @@ const List = () => {
                   <span>
                     Min Price <small> Per night</small>{" "}
                   </span>
-                  <input type="number" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMin(e.target.value)}
+                  />
                 </OptionItems>
                 <OptionItems>
                   {" "}
                   <span>
                     Max Price <small> Per night</small>{" "}
                   </span>
-                  <input type="number" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMax(e.target.value)}
+                  />
                 </OptionItems>
                 <OptionItems>
                   <span>Adult </span>
@@ -83,7 +96,7 @@ const List = () => {
                   <input type="number" min={1} placeholder={option.room} />
                 </OptionItems>
               </Optionsu>
-              <button>Search</button>
+              <button onClick={handleClick}>Search</button>
             </SearchItem>
           </ListSearch>
           <ListResult>
@@ -92,7 +105,7 @@ const List = () => {
             ) : (
               <>
                 {data.map((item) => (
-                  <SearchItemu item={item} />
+                  <SearchItemu key={item._id} item={item} />
                 ))}
               </>
             )}
