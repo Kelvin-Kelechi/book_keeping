@@ -28,7 +28,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
   console.log(location);
   const { data, error, loading, reFetch } = useFetch(
-    `hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
   const handleClick = () => {
     reFetch();
@@ -50,7 +50,7 @@ const List = () => {
               <Span onClick={() => setOpenDate(!openDate)} active>
                 {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
                   date[0].endDate,
-                  "dd/MM/yyyy"
+                  "dd/MM/yyyy"  
                 )}`}
               </Span>
               {openDate && (
