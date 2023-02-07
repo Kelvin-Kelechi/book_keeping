@@ -68,6 +68,7 @@ const Hotels = () => {
             </Slider>
           )}
           <HotelWrapper>
+            <button >Reserve or Book Now!</button>
             <HotelTitle>{data.name}</HotelTitle>
             <HotelAddress>
               <MdLocationOn />

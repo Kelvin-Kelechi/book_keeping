@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 import { IoExitOutline } from "react-icons/io5";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 export const HotelContainer = styled.div`
@@ -14,6 +14,18 @@ export const HotelWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   position: relative;
+  button {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border: none;
+    padding: 10px 20px;
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 `;
 export const HotelTitle = styled.h1`
   font-size: 24px;
@@ -35,7 +47,6 @@ export const HotelImgWrapper = styled.div`
 export const HotelDistance = styled.span`
   color: #0071c2;
   font-weight: 500;
-  
 `;
 export const HotelPriceHighLight = styled.span`
   color: #008009;
@@ -86,7 +97,7 @@ export const HotelDesc = styled.p`
   font-size: 14px;
   margin-top: 20px;
 `;
- 
+
 export const Slider = styled.div`
   position: sticky;
   top: 0;
@@ -98,7 +109,7 @@ export const Slider = styled.div`
   display: flex;
   align-items: center;
 `;
- 
+
 export const SliderWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -130,6 +141,3 @@ export const SliderArrRight = styled(FaArrowCircleRight)`
   color: lightgray;
   cursor: pointer;
 `;
- 
- 
- 
