@@ -26,7 +26,7 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
-  console.log(location);
+   
   const { data, error, loading, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );

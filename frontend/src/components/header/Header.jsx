@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   DateRangeStyle,
   FaBedStyle,
@@ -24,6 +24,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/context";
 
 const Header = ({ type }) => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
+  const {dispatch} = useContext(SearchContext)
 
   const handleOption = (name, operation) => {
     setOption((prev) => {
@@ -49,6 +51,7 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
+    dispatch({type:"NEW_SEARCH", payload:{destination,date,option}})
     navigate("/hotels", { state: { date, destination, option } });
   };
 

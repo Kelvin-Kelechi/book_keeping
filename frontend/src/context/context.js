@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     adult: undefined,
   },
 };
-const SearchContext = createContext(INITIAL_STATE);
+ export const SearchContext = createContext(INITIAL_STATE);
 
 export const SearchReducer = (state, action) => {
   switch (action.type) {
