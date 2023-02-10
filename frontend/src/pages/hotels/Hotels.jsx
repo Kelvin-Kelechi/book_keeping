@@ -35,12 +35,22 @@ const Hotels = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
-const {date} = useContext(SearchContext) 
-console.log(date)
+  const { date } = useContext(SearchContext);
+
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function daydifference(date1, date2) {
+    const timeDiff = Math.abs(date1.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  console.log(daydifference)
+
   const handleOpen = (i) => {
     setSliderNum(i);
     setOpen(true);
   };
+
   const handleMove = (direction) => {
     let newSliderMove;
     if (direction === "l") {
@@ -70,7 +80,7 @@ console.log(date)
             </Slider>
           )}
           <HotelWrapper>
-            <button >Reserve or Book Now!</button>
+            <button>Reserve or Book Now!</button>
             <HotelTitle>{data.name}</HotelTitle>
             <HotelAddress>
               <MdLocationOn />

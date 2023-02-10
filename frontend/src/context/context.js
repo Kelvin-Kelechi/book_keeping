@@ -17,7 +17,7 @@ export const SearchReducer = (state, action) => {
     case "RESET_SEARCH":
       return INITIAL_STATE;
     default:
-      return action;
+      return state;
   }
 };
 

@@ -8,7 +8,6 @@ import {
   HeaderBtn,
   HeaderContainer,
   HeaderDesc,
-  HeaderIcon,
   HeaderList,
   HeaderListItem,
   HeaderSearch,
@@ -17,9 +16,8 @@ import {
   Options,
   OptionsCounter,
   OptionsItem,
-  OptionsText,
 } from "./header.style";
-import { FaBed, FaPlane, FaCar, FaTaxi, FaCalendar } from "react-icons/fa";
+import { FaBed, FaPlane, FaCar, FaTaxi } from "react-icons/fa";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
@@ -39,7 +37,7 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
-  const {dispatch} = useContext(SearchContext)
+  const { dispatch } = useContext(SearchContext);
 
   const handleOption = (name, operation) => {
     setOption((prev) => {
@@ -51,7 +49,7 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
-    dispatch({type:"NEW_SEARCH", payload:{destination,date,option}})
+    dispatch({ type: "NEW_SEARCH", payload: { destination, date, option } });
     navigate("/hotels", { state: { date, destination, option } });
   };
 
