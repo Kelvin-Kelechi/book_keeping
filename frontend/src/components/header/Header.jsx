@@ -30,7 +30,7 @@ const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [optionOpen, setOptionOpen] = useState(false);
   const [option, setOption] = useState({ adult: 1, children: 0, room: 1 });
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -49,8 +49,8 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, date, option } });
-    navigate("/hotels", { state: { date, destination, option } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, option } });
+    navigate("/hotels", { state: { destination, dates, option } });
   };
 
   return (
@@ -99,17 +99,17 @@ const Header = ({ type }) => {
                 <HeaderSearchItem>
                   <FaCalendarDayStyle />
                   <span onClick={() => setOpenDate(!openDate)}>
-                    {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                      date[0].endDate,
+                    {`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                      dates[0].endDate,
                       "dd/MM/yyyy"
                     )}`}
                   </span>
                   {openDate && (
                     <DateRangeStyle
                       editableDateInputs={true}
-                      onChange={(item) => setDate([item.selection])}
+                      onChange={(item) => setDates([item.selection])}
                       moveRangeOnFirstSelection={false}
-                      ranges={date}
+                      ranges={dates}
                       minDate={new Date()}
                     />
                   )}

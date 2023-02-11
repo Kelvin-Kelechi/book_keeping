@@ -4,8 +4,6 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
 import { MdLocationOn } from "react-icons/md";
-import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-
 import {
   HotelAddress,
   HotelContainer,
@@ -35,16 +33,16 @@ const Hotels = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
-  const { date } = useContext(SearchContext);
 
-  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  function daydifference(date1, date2) {
-    const timeDiff = Math.abs(date1.getTime() - date1.getTime());
-    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-    return diffDays;
-  }
-
-  console.log(daydifference)
+  const { dates } = useContext(SearchContext);
+  console.log(dates);
+  
+  // const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  // function dayDifference(date1, date2) {
+  //   const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  //   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+  //   return diffDays;
+  // }
 
   const handleOpen = (i) => {
     setSliderNum(i);

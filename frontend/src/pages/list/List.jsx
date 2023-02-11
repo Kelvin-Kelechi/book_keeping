@@ -23,7 +23,7 @@ const List = () => {
   const [openDate, setOpenDate] = useState(false);
   const [destination, setDestination] = useState(location.state.destination);
   const [option, setOption] = useState(location.state.option);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
    
@@ -48,16 +48,16 @@ const List = () => {
             <SearchItem>
               <label htmlFor="">Check-in date</label>
               <Span onClick={() => setOpenDate(!openDate)} active>
-                {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                  date[0].endDate,
+                {`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                  dates[0].endDate,
                   "dd/MM/yyyy"  
                 )}`}
               </Span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDate([item.selection])}
+                  onChange={(item) => setDates([item.selection])}
                   minDate={new Date()}
-                  ranges={date}
+                  ranges={dates}
                 />
               )}
             </SearchItem>
