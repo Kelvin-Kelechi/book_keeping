@@ -21,7 +21,6 @@ import {
   SliderArrLeft,
   SliderArrRight,
   SliderExit,
-  SliderImg,
   SliderWrapper,
 } from "./hotels.style";
 import useFetch from "../../hooks/useFetch";
@@ -44,7 +43,7 @@ const Hotels = () => {
   //   return diffDays;
   // }
 
-  const handleOpen = (i) => {
+  const handleOpen = (i) => { 
     setSliderNum(i);
     setOpen(true);
   };
