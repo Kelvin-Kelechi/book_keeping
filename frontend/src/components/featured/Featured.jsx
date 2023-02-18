@@ -1,27 +1,7 @@
 import React from "react";
 import useFetch from "../../hooks/useFetch"; 
 import { Feature, FeatureItem, FeatureTitle, Img } from "./featured.style";
-
-const Featured = () => {
-  const { data, error, loading } = useFetch(
-    "/hotels/countByCity?cities=lagos,abuja,anambara"
-  );
-  console.log(data);
-  return (
-    <Feature>
-      {loading ? ( 
-        "loading... please wait"
-      ) : (
-        <>
-          <FeatureItem>
-            <Img
-              src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
-              alt=""
-            />
-            <FeatureTitle>
-              <h1>Lagos</h1>
-              <h2>{data[0]} achivements</h2>
-            </FeatureTitle>
+ /FeatureTitle>
           </FeatureItem>
           <FeatureItem>
             <Img
