@@ -9,7 +9,7 @@ const Featured = () => {
   return (
     <Feature>
       {loading ? (
-        "Please...wait"
+        "loading..please wait"
       ) : (
         <>
           <FeatureItem>
