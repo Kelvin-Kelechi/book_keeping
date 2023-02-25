@@ -33,17 +33,18 @@ const Hotels = () => {
   const id = location.pathname.split("/")[2];
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
 
-  const { dates } = useContext(SearchContext);
-  console.log(dates);
+  const { dates, option } = useContext(SearchContext);
 
-  // const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  // function dayDifference(date1, date2) {
-  //   const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-  //   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-  //   return diffDays;
-  // }
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
 
-  const handleOpen = (i) => { 
+  const day = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
+
+  const handleOpen = (i) => {
     setSliderNum(i);
     setOpen(true);
   };
@@ -104,13 +105,14 @@ const Hotels = () => {
                 <HotelDesc>{data.desc}</HotelDesc>
               </HotelDetailsTexts>
               <HotelDetailsPrice>
-                <h1>Perfect for a 9-night stay!</h1>
+                <h1>Perfect for a {day}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>$945</b> (9 nights)
+                  <b>${day * data.cheapestPrice * option.room}</b> ({day}{" "}
+                  nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </HotelDetailsPrice>
