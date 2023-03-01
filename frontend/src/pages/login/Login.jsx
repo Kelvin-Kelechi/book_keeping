@@ -25,35 +25,35 @@ const Login = () => {
   console.log(user);
   return (
     <LoginContainer>
-      <Lcontainer>
-        <div>
-          {" "}
-          <h1>Login</h1>
-        </div>
-        <input
-          type="text"
-          placeholder="Enter username"
-          name=""
-          id="username"
-          onChange={handleOnchange}
-        />
-        <input
-          type="password"
-          placeholder="Enter password"
-          name=""
-          id="password"
-          onChange={handleOnchange}
-        />
-        <button onClick={handleLogin} type="submit">
-          Login
-        </button>
-        {error && <span>{error.message}</span>}
-        <div>
-          <p>
-            Already have an account? <strong>Create an account</strong>{" "}
-          </p>
-        </div>
-      </Lcontainer>
+        <h2>Login</h2>
+        <form action="" method="post">
+          <label htmlFor="">Username</label>
+          <input
+            type="text"
+            placeholder="Enter username"
+            name=""
+            id="username"
+            onChange={handleOnchange}
+          />
+          <label htmlFor="">Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            name=""
+            id="password"
+            onChange={handleOnchange}
+          />
+          <button onClick={handleLogin} type="submit">
+            Login
+          </button>
+          {error && <span>{error.message}</span>}
+          <div>
+            <p>
+              Already have an account? <strong>Create an account</strong>{" "}
+            </p>
+          </div>
+        </form>
+ 
     </LoginContainer>
   );
 };
