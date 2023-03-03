@@ -40,8 +40,8 @@ export const LoginContainer = styled.div`
     border: none;
     border-radius: 5px;
     margin-left: 4px;
-    background: white;
-    color: #003580;
+    background-color: #0071c2;
+    color: #FFFFFF;
   }
   p {
     color: white;

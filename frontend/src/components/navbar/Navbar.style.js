@@ -24,6 +24,7 @@ export const NavButton = styled.button`
   padding: 5px 10px;
   cursor: pointer;
   color: #003580;
+  
 `;
 
 

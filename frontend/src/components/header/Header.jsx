@@ -23,6 +23,7 @@ import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/context";
+import { AuthContext } from "../../context/authContext";
 
 const Header = ({ type }) => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Header = ({ type }) => {
     },
   ]);
   const { dispatch } = useContext(SearchContext);
-
+  const { user } = useContext(AuthContext);
   const handleOption = (name, operation) => {
     setOption((prev) => {
       return {
@@ -86,7 +87,7 @@ const Header = ({ type }) => {
                 Get rewarded for your travels – unlock instant savings of 10% or
                 more with a free Lamabooking account
               </HeaderDesc>
-              <HeaderBtn>Sign in / Register</HeaderBtn>
+             { !user && <HeaderBtn>Sign in / Register</HeaderBtn>}
               <HeaderSearch>
                 <HeaderSearchItem>
                   <FaBedStyle />

@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { LoginContainer, Lcontainer } from "./login.style";
 const Login = () => {
+    const navigate = useNavigate()
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
@@ -15,6 +17,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
+    navigate('/')
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
@@ -51,7 +54,7 @@ const Login = () => {
         />
         <br />
         <br />
-        <button onClick={handleLogin} type="submit">
+        <button disabled={loading} onClick={handleLogin} type="submit">
           <b>Login</b>
         </button>
         {error && <span>{error.message}</span>}
