@@ -97,6 +97,7 @@ export const HotelDesc = styled.p`
   font-size: 14px;
   margin-top: 20px;
 `;
+  
 
 export const Slider = styled.div`
   position: sticky;

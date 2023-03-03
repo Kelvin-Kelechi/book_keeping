@@ -24,16 +24,20 @@ import {
   SliderWrapper,
 } from "./hotels.style";
 import useFetch from "../../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/context";
+import { AuthContext } from "../../context/authContext";
+import Reserve from "../../components/reserve/Reserve";
 const Hotels = () => {
   const [sliderNum, setSliderNum] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
-
+  const navigate = useNavigate();
   const { dates, option } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -58,7 +62,13 @@ const Hotels = () => {
     }
     setSliderNum(newSliderMove);
   };
-
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <>
       <Navbar />
@@ -78,7 +88,7 @@ const Hotels = () => {
             </Slider>
           )}
           <HotelWrapper>
-            <button>Reserve or Book Now!</button>
+            <button onClick={handleClick}>Reserve or Book Now!</button>
             <HotelTitle>{data.name}</HotelTitle>
             <HotelAddress>
               <MdLocationOn />
@@ -114,12 +124,12 @@ const Hotels = () => {
                   <b>${day * data.cheapestPrice * option.room}</b> ({day}{" "}
                   nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
               </HotelDetailsPrice>
             </HotelDetails>
           </HotelWrapper>
           <MailList />
           <Footer />
+          {openModal && <Reserve setOpenModal={setOpenModal} hotelId={id} />}
         </HotelContainer>
       )}
     </>
