@@ -72,6 +72,7 @@ export const HotelDetailsPrice = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  border-radius:10px;
   gap: 20px;
   h1 {
     font-size: 18px;

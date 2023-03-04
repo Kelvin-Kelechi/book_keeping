@@ -133,7 +133,7 @@ const Hotels = () => {
         </HotelContainer>
       )}
     </>
-  );
-};
+  );  
+}; 
 
 export default Hotels;

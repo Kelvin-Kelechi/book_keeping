@@ -1,11 +1,15 @@
-import React from 'react'
-import {TbCircleX} from 'react-icons/tb'
-const Reserve = ({setOpenModal, hotelId}) => {
+import React from "react";
+import { FaTimes } from "react-icons/fa";
+import { Container, ReserveContainer } from "./reserve.style";
+const Reserve = ({ setOpenModal, hotelId }) => {
   return (
-    <div> 
-      <TbCircleX  onClick={setOpenModal(false)} /> kelvin
-    </div>
-  )
-}
+    <Container>
+      <ReserveContainer>
+        {" "}
+        <FaTimes onClick={() => setOpenModal(false)} />{" "}
+      </ReserveContainer>
+    </Container>
+  );
+};
 
-export default Reserve
+export default Reserve;
