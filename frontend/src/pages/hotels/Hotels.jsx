@@ -112,6 +112,7 @@ const Hotels = () => {
             <HotelDetails>
               <HotelDetailsTexts>
                 <HotelTitle>{data.title}</HotelTitle>
+                
                 <HotelDesc>{data.desc}</HotelDesc>
               </HotelDetailsTexts>
               <HotelDetailsPrice>

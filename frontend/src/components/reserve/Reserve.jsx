@@ -28,14 +28,15 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     const start = new Date(startDate)
     const end = new Date(endDate)
     const date = new Date(start.getTime());
-    let list = [];-0i0
+    let list = [];
     while (data <= end) {
       list.push(new Date(date));
-      date.setDate(date.getTime() + 1);
+      date.setDate (date.getTime() + 1);
     }
     return list;
   };
   console.log(getDate(dates[0]?.startDate, dates[0]?.endDate));
+
   const handleClick = ()=>{
 
   }
