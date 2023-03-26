@@ -17,7 +17,7 @@ const Navbar = () => {
           <Link to="/" style={{ color: "white", textDecoration: "none" }}>
             <Logo>Kedevbooking</Logo>
           </Link>
-          {user? <p>Welcome, {user.username} </p> : <NavItems>
+          {user? <p>Hello, {user.username} </p> : <NavItems>
             <NavButton>Register</NavButton>
             <NavButton>
               {" "}

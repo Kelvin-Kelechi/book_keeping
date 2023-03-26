@@ -17,6 +17,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
   const { data, error, loading } = useFetch(`/hotels/room/${hotelId}`);
   const [check, setCheck] = useState([]);
   const { dates } = useContext(SearchContext);
+
   const handleCheck = (e) => {
     const checked = e.target.checked;
     const value = e.target.value;
@@ -24,22 +25,26 @@ const Reserve = ({ setOpenModal, hotelId }) => {
       checked ? [...check, value] : check.filter((item) => item !== value)
     );
   };
-  const getDate = (startDate, endDate) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
+
+  const getDatesInRange = (start, end) => {
     const date = new Date(start.getTime());
     let list = [];
-    while (data <= end) {
-      list.push(new Date(date));
-      date.setDate (date.getTime() + 1);
+    if (data <= end) {
+      list.push(new Date(date).getTime());
+      date.setDate(date.getDate() + 1);
     }
     return list;
   };
-  console.log(getDate(dates[0]?.startDate, dates[0]?.endDate));
+  const allDates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
-  const handleClick = ()=>{
+  const isAvailable = (roomNumber) => {
+    const isFound = roomNumber.unavailableDate.some((date) => 
+      allDates.includes(new Date(date).getTime())
+    );
+    return !isFound;
+  };
 
-  }
+  const handleClick = () => {};
   return (
     <Container>
       <ReserveContainer>
