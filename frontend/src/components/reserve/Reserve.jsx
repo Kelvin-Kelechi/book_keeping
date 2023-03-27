@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { FaTimes } from "react-icons/fa";
+
 import {
+  Close,
   Container,
   Rdesc,
   ReserveContainer,
@@ -35,7 +36,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     }
     return list;
   };
-  const allDates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+  const allDates = getDatesInRange(dates[0]?.startDate, dates[0]?.endDate);
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDate.some((date) => 
@@ -49,7 +50,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     <Container>
       <ReserveContainer>
         {" "}
-        <FaTimes onClick={() => setOpenModal(false)} />{" "}
+        <Close onClick={() => setOpenModal(false)} />
         <span>Select your rooms:</span>
         {data.map((item) => (
           <Ritem key={item._id}>
@@ -68,13 +69,14 @@ const Reserve = ({ setOpenModal, hotelId }) => {
                   type="checkbox"
                   value={roomNumber._id}
                   onClick={handleCheck}
+                  disabled={!isAvailable(roomNumber)}
                 />
               </Room>
             ))}
           </Ritem>
         ))}
+        <button onClick={handleClick}>Reserve now</button>
       </ReserveContainer>
-      <button onClick={handleClick}>Reserve now</button>
     </Container>
   );
 };
