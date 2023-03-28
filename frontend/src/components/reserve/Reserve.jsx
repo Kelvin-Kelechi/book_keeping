@@ -10,6 +10,7 @@ import {
   Rmax,
   Room,
   Rprice,
+  RSelectedRooms,
   Rtitle,
 } from "./reserve.style";
 import useFetch from "../../hooks/useFetch";
@@ -75,17 +76,19 @@ const Reserve = ({ setOpenModal, hotelId }) => {
               </Rmax>
               <Rprice>{item.price}</Rprice>
             </RitemInfo>
-            {item.roomNumbers.map((roomNumber) => (
-              <Room key={roomNumber._id}>
-                <label>{roomNumber.number}</label>
-                <input
-                  type="checkbox"
-                  value={roomNumber._id}
-                  onClick={handleCheck}
-                  disabled={!isAvailable(roomNumber)}
-                />
-              </Room>
-            ))}
+            <RSelectedRooms>
+              {item.roomNumbers.map((roomNumber) => (
+                <Room key={roomNumber._id}>
+                  <label>{roomNumber.number}</label>
+                  <input
+                    type="checkbox"
+                    value={roomNumber._id}
+                    onClick={handleCheck}
+                    disabled={!isAvailable(roomNumber)}
+                  />
+                </Room>
+              ))}
+            </RSelectedRooms>
           </Ritem>
         ))}
         <button onClick={handleClick}>Reserve now</button>
