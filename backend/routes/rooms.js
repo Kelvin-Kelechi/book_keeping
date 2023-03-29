@@ -13,7 +13,7 @@ const router = express();
 
 router.post("/:hotelId", VerifyAdmin, ROOM_POST);
 router.put("/:id", VerifyAdmin, ROOM_PUT);
-router.put("/availability/:id", UPDATE_ROOM_AVAILABILITY);
+router.put("/availability/:id", UPDATE_ROOM_AVAILABILITY);  
 router.delete("/:id/:hotelId", VerifyAdmin, ROOM_DELETE);
 router.get("/:id", ROOM_GET);
 router.get("/", ROOM_GET_ALL);

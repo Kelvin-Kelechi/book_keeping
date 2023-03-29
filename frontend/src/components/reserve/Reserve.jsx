@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-
 import {
   Close,
   Container,
@@ -16,10 +15,12 @@ import {
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/context";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Reserve = ({ setOpenModal, hotelId }) => {
   const { data, error, loading } = useFetch(`/hotels/room/${hotelId}`);
   const [check, setCheck] = useState([]);
   const { dates } = useContext(SearchContext);
+  const navigate = useNavigate()
 
   const handleCheck = (e) => {
     const checked = e.target.checked;
@@ -38,11 +39,11 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     }
     return list;
   };
-  const allDates = getDatesInRange(dates[0]?.startDate, dates[0]?.endDate);
+  const alldates = getDatesInRange(dates[0]?.startDate, dates[0]?.endDate);
 
   const isAvailable = (roomNumber) => {
-    const isFound = roomNumber.unavailableDate.some((date) =>
-      allDates.includes(new Date(date).getTime())
+    const isFound = roomNumber.unavailableDate && roomNumber.unavailableDate.some((date) =>
+      alldates.includes(new Date(date).getTime())
     );
     return !isFound;
   };
@@ -52,11 +53,14 @@ const Reserve = ({ setOpenModal, hotelId }) => {
       await Promise.all(
         check.map((roomId) => {
           const res = axios.put(`/rooms/availability/${roomId}`, {
-            dates: allDates,
+            dates: alldates,
           });
            return res.data;
         })
-      );    
+        
+      );  
+      setOpenModal(false);
+      navigate("/");    
     } catch (error) {}
   };
 
@@ -64,10 +68,10 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     <Container>
       <ReserveContainer>
         {" "}
-        <Close onClick={() => setOpenModal(false)} />
+        <Close onClick={() => setOpenModal(false)} />     
         <span>Select your rooms:</span>
         {data.map((item) => (
-          <Ritem key={item._id}>
+          <Ritem key={item._id}> 
             <RitemInfo>
               <Rtitle>{item.title}</Rtitle>
               <Rdesc>{item.desc}</Rdesc>
@@ -80,10 +84,10 @@ const Reserve = ({ setOpenModal, hotelId }) => {
               {item.roomNumbers.map((roomNumber) => (
                 <Room key={roomNumber._id}>
                   <label>{roomNumber.number}</label>
-                  <input
+                  <input 
                     type="checkbox"
                     value={roomNumber._id}
-                    onClick={handleCheck}
+                    onChange={handleCheck} 
                     disabled={!isAvailable(roomNumber)}
                   />
                 </Room>

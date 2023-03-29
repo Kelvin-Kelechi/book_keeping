@@ -6,7 +6,7 @@ import {
   NavButton,
   Logo,
 } from "./navbar.style";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 const Navbar = () => {
     const {  user } = useContext(AuthContext);
