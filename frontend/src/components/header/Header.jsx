@@ -85,9 +85,9 @@ const Header = ({ type }) => {
               <HeaderTitle>A lifetime of discounts? It's Genius.</HeaderTitle>
               <HeaderDesc>
                 Get rewarded for your travels – unlock instant savings of 10% or
-                more with a free Lamabooking account
+                more with a free Kedevbooking account
               </HeaderDesc>
-             { !user && <HeaderBtn>Sign in / Register</HeaderBtn>}
+              {!user && <HeaderBtn>Sign in / Register</HeaderBtn>}
               <HeaderSearch>
                 <HeaderSearchItem>
                   <FaBedStyle />

@@ -17,10 +17,18 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
-    navigate("/");
+    
     try {
       const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      if (res.data.isAdmin) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "You are not allowed" },
+        });
+      }
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
     }

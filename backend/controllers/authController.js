@@ -39,7 +39,7 @@ export const LOGIN = async (req, res, next) => {
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
-      .json(other);
+    .json({details:{...other}, isAdmin});
   } catch (error) {    
     next(error);
   }
