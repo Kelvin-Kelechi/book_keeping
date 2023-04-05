@@ -49,4 +49,10 @@ export const LoginContainer = styled.div`
   input::placeholder {
     color: lightgray;
   }
+  span {
+   font-weight:bold;
+    color: #ff3131;
+    display: flex;
+    margin-top: 10px;
+  }
 `;

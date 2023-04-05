@@ -14,12 +14,12 @@ const Datatable = () => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action",
+      headerName: "Action", 
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+           <div className="cellAction">
+            <Link to="/users/test" style={{ textDecoration: "none" }}>  
               <div className="viewButton">View</div>
             </Link>
             <div
