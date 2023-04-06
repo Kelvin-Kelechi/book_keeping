@@ -20,8 +20,18 @@ export const userColumns = [
   },
 
   {
-    field: "age",
-    headerName: "Age",
+    field: "country",
+    headerName: "country",
+    width: 100,
+  },
+  {
+    field: "city",
+    headerName: "city",
+    width: 100,
+  },
+  {
+    field: "phone",
+    headerName: "phone",
     width: 100,
   },
   {
