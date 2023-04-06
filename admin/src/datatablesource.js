@@ -7,7 +7,14 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+          <img
+            className="cellImg"
+            src={
+              params.row.profile ||
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcU50X1UOeDaphmUyD6T8ROKs-HjeirpOoapiWbC9cLAqewFy1gthrgUTB9E7nKjRwOVk&usqp=CAU"
+            }
+            alt="avatar"
+          />
           {params.row.username}
         </div>
       );
@@ -33,18 +40,6 @@ export const userColumns = [
     field: "phone",
     headerName: "phone",
     width: 100,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 160,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
   },
 ];
 
