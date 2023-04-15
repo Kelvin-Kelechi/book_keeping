@@ -69,7 +69,7 @@ const Hotels = () => {
       navigate("/login");
     }
   };
-  return (
+  return ( 
     <>
       <Navbar />
       <Header type="list" />
