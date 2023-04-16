@@ -1,11 +1,11 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { hotelsColumns, userColumns, userRows } from "../../datatablesource";
 import { Link, useLocation } from "react-router-dom";  
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
-const Datatable = ({columns}) => {
+const Datatable = ({ columns }) => {
   const [list, setList] = useState([]);
   const location = useLocation();
   const path = location.pathname.split("/")[1];
@@ -23,7 +23,7 @@ const Datatable = ({columns}) => {
   const actionColumn = [
     {
       field: "action",
-      headerName: "Action", 
+      headerName: "Action",
       width: 200,
       renderCell: (params) => {
         return (
