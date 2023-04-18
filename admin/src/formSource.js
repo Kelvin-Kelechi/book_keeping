@@ -75,3 +75,30 @@ export const userInputs = [
     },
   ];
   
+  export const roomInputs = [
+    {
+      id: "title",
+      label: "Title",
+      type: "text",
+      placeholder: "2 bedroom",
+    },
+    {
+      id: "desc",
+      label: "Description",
+      type: "text",
+      placeholder: "king size bedroom, 1 bathroom",
+    },
+    {
+      id: "price",
+      label: "Price",
+      type: "number",
+      placeholder: "100",
+    },
+    {
+      id: "maxPeople",
+      label: "Price",
+      type: "number",
+      placeholder: "2",
+    } 
+  ];
+  
